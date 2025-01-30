@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Button() {
+      this.clicked = false;
+      const button = document.createElement('button');
+      button.textContent = 'Click me';
+
+      button.addEventListener('click', function () {
+        // `this` refers to the button element
+        console.log(this instanceof HTMLButtonElement); // Output: true
+        console.log(this instanceof Button); // Output: false
+      });
+
+      document.body.appendChild(button);
+    }
+
+    const btn = new Button();
+  </script>
+</body>
+
+</html>

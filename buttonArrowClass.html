@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Button {
+      constructor() {
+        this.counter = 0; // Initialize counter
+        this.button = document.createElement('button');
+        this.button.textContent = `Click me (${this.counter})`;
+
+        this.setupEventListener(); // Call the method to set up the event listener
+
+        document.body.appendChild(this.button);
+      }
+
+      setupEventListener() {
+        this.button.addEventListener('click', () => {
+          // `this` refers to the Button instance
+          this.counter++; // Increment counter
+          this.button.textContent = `Click me (${this.counter})`; // Update button text
+        });
+      }
+    }
+
+    const btn1 = new Button();
+    const btn2 = new Button();
+  </script>
+</body>
+
+</html>

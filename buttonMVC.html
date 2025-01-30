@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Model {
+      constructor() {
+        this.counter = 0;
+      }
+
+      incrementCounter() {
+        this.counter++;
+      }
+
+      getCounter() {
+        return this.counter;
+      }
+    }
+
+    class View {
+      constructor() {
+        this.button = document.createElement('button');
+        this.button.textContent = 'Click me (0)';
+        document.body.appendChild(this.button);
+      }
+
+      updateButtonText(counter) {
+        this.button.textContent = `Click me (${counter})`;
+      }
+    }
+
+    class Controller {
+      constructor(model, view) {
+        this.model = model;
+        this.view = view;
+
+        this.setupEventListener();
+      }
+
+      setupEventListener() {
+        this.view.button.addEventListener('click', () => {
+          this.model.incrementCounter(); // Increment counter in the model
+          this.view.updateButtonText(this.model.getCounter()); // Update button text with the counter value from the model
+        });
+      }
+    }
+
+    const model1 = new Model();
+    const view1 = new View();
+    const controller1 = new Controller(model1, view1);
+
+    const model2 = new Model();
+    const view2 = new View();
+    const controller2 = new Controller(model2, view2);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Button {
+      constructor() {
+        this.counter = 0; // Initialize counter
+        this.button = document.createElement('button');
+        this.button.textContent = `Click me (${this.counter})`;
+
+        this.setupEventListener(); // Call the method to set up the event listener
+
+        document.body.appendChild(this.button);
+      }
+
+      setupEventListener() {
+        // Store reference to the Button instance
+        const self = this;
+
+        this.button.addEventListener('click', function() {
+          // `this` refers to the button element
+          self.counter++; // Increment counter using the stored reference
+          self.button.textContent = `Click me (${self.counter})`; // Update button text
+        });
+      }
+    }
+
+    const btn1 = new Button();
+    const btn2 = new Button();
+  </script>
+</body>
+
+</html>
